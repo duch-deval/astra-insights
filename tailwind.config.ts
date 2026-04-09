@@ -47,6 +47,21 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          light: "hsl(var(--navy-light))",
+          foreground: "hsl(var(--navy-foreground))",
+          "foreground-active": "hsl(var(--navy-foreground-active))",
+        },
+        sole: "hsl(var(--sole-source))",
+        competitive: "hsl(var(--competitive))",
+        warning: "hsl(var(--warning))",
+        kpi: {
+          DEFAULT: "hsl(var(--kpi-bg))",
+          border: "hsl(var(--kpi-border))",
+          value: "hsl(var(--kpi-value))",
+          label: "hsl(var(--kpi-label))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
