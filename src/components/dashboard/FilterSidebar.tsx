@@ -3,12 +3,15 @@ import { oems } from '@/data/mockData';
 
 export type SupplyChainFilter = 'All' | 'Aviation' | 'Land' | 'Maritime';
 export type SoleSourceFilter = 'All' | 'Sole Source' | 'Competitive';
+export type CriticalityFilter = 'All' | 'WSGC-A';
 
 interface FilterSidebarProps {
   supplyChain: SupplyChainFilter;
   setSupplyChain: (v: SupplyChainFilter) => void;
   soleSourceFilter: SoleSourceFilter;
   setSoleSourceFilter: (v: SoleSourceFilter) => void;
+  criticalityFilter: CriticalityFilter;
+  setCriticalityFilter: (v: CriticalityFilter) => void;
   selectedOems: string[];
   setSelectedOems: (v: string[]) => void;
   platformSearch: string;
@@ -18,11 +21,16 @@ interface FilterSidebarProps {
 export function FilterSidebar({
   supplyChain, setSupplyChain,
   soleSourceFilter, setSoleSourceFilter,
+  criticalityFilter, setCriticalityFilter,
   selectedOems, setSelectedOems,
   platformSearch, setPlatformSearch,
 }: FilterSidebarProps) {
   const chainOptions: SupplyChainFilter[] = ['All', 'Aviation', 'Land', 'Maritime'];
   const soleOptions: SoleSourceFilter[] = ['All', 'Sole Source', 'Competitive'];
+  const critOptions: { value: CriticalityFilter; label: string }[] = [
+    { value: 'All', label: 'All Tiers' },
+    { value: 'WSGC-A', label: 'Critical (WSGC-A) Only' },
+  ];
 
   const toggleOem = (name: string) => {
     setSelectedOems(
@@ -75,6 +83,26 @@ export function FilterSidebar({
                 }`}
               >
                 {opt}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Criticality */}
+        <div>
+          <label className="text-[10px] uppercase tracking-wider text-navy-foreground mb-2 block font-medium">Criticality</label>
+          <div className="space-y-1">
+            {critOptions.map(opt => (
+              <button
+                key={opt.value}
+                onClick={() => setCriticalityFilter(opt.value)}
+                className={`w-full text-left px-2.5 py-1.5 rounded text-xs transition-colors ${
+                  criticalityFilter === opt.value
+                    ? 'bg-sidebar-accent text-navy-foreground-active'
+                    : 'hover:bg-sidebar-accent/50'
+                }`}
+              >
+                {opt.label}
               </button>
             ))}
           </div>
