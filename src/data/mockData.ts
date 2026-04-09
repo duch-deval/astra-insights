@@ -13,7 +13,8 @@ export interface NSNRecord {
 
 export const subsystems = [
   'Airframe Structure', 'Landing Gear', 'Hydraulics', 'Jet Engines',
-  'Avionics', 'Fasteners & Hardware', 'Cable & Wire', 'Valves', 'Instruments'
+  'Avionics/Electronics', 'Fuel Systems', 'Valves', 'Cable & Wire',
+  'Instruments', 'Fasteners & Hardware', 'Fire Control', 'Support Equipment'
 ] as const;
 
 export const oems = [
@@ -35,38 +36,37 @@ export const oems = [
 ];
 
 export const platforms = [
-  { name: 'F-16 Fighting Falcon', category: 'Fixed Wing Aircraft', chain: 'Aviation' as const, tier: 'WSGC-A' as const },
-  { name: 'F-15 Eagle', category: 'Fixed Wing Aircraft', chain: 'Aviation' as const, tier: 'WSGC-A' as const },
-  { name: 'F-35 Lightning II', category: 'Fixed Wing Aircraft', chain: 'Aviation' as const, tier: 'WSGC-A' as const },
-  { name: 'B-52 Stratofortress', category: 'Strategic Bomber', chain: 'Aviation' as const, tier: 'WSGC-A' as const },
-  { name: 'B-1B Lancer', category: 'Strategic Bomber', chain: 'Aviation' as const, tier: 'WSGC-A' as const },
-  { name: 'C-130 Hercules', category: 'Transport Aircraft', chain: 'Aviation' as const, tier: 'WSGC-B' as const },
-  { name: 'C-17 Globemaster III', category: 'Transport Aircraft', chain: 'Aviation' as const, tier: 'WSGC-B' as const },
-  { name: 'AH-64 Apache', category: 'Rotary Wing Aircraft', chain: 'Aviation' as const, tier: 'WSGC-A' as const },
-  { name: 'UH-60 Black Hawk', category: 'Rotary Wing Aircraft', chain: 'Aviation' as const, tier: 'WSGC-B' as const },
-  { name: 'CH-47 Chinook', category: 'Rotary Wing Aircraft', chain: 'Aviation' as const, tier: 'WSGC-B' as const },
-  { name: 'V-22 Osprey', category: 'Tiltrotor Aircraft', chain: 'Aviation' as const, tier: 'WSGC-A' as const },
-  { name: 'KC-135 Stratotanker', category: 'Tanker Aircraft', chain: 'Aviation' as const, tier: 'WSGC-B' as const },
-  { name: 'E-3 Sentry', category: 'C4ISR Aircraft', chain: 'Aviation' as const, tier: 'WSGC-B' as const },
-  { name: 'MQ-9 Reaper', category: 'Unmanned Aerial System', chain: 'Aviation' as const, tier: 'WSGC-B' as const },
-  { name: 'P-8 Poseidon', category: 'Maritime Patrol Aircraft', chain: 'Aviation' as const, tier: 'WSGC-A' as const },
-  { name: 'Arleigh Burke DDG', category: 'Guided Missile Destroyer', chain: 'Maritime' as const, tier: 'WSGC-A' as const },
-  { name: 'Ticonderoga CG', category: 'Guided Missile Cruiser', chain: 'Maritime' as const, tier: 'WSGC-A' as const },
-  { name: 'Virginia SSN', category: 'Nuclear Submarine', chain: 'Maritime' as const, tier: 'WSGC-A' as const },
-  { name: 'Nimitz CVN', category: 'Aircraft Carrier', chain: 'Maritime' as const, tier: 'WSGC-A' as const },
-  { name: 'San Antonio LPD', category: 'Amphibious Transport Dock', chain: 'Maritime' as const, tier: 'WSGC-B' as const },
-  { name: 'Freedom LCS', category: 'Littoral Combat Ship', chain: 'Maritime' as const, tier: 'WSGC-C' as const },
-  { name: 'Independence LCS', category: 'Littoral Combat Ship', chain: 'Maritime' as const, tier: 'WSGC-C' as const },
-  { name: 'Minuteman III', category: 'ICBM', chain: 'Land' as const, tier: 'WSGC-A' as const },
-  { name: 'M1A2 Abrams', category: 'Main Battle Tank', chain: 'Land' as const, tier: 'WSGC-A' as const },
-  { name: 'M2 Bradley', category: 'Infantry Fighting Vehicle', chain: 'Land' as const, tier: 'WSGC-A' as const },
-  { name: 'Stryker', category: 'Armored Fighting Vehicle', chain: 'Land' as const, tier: 'WSGC-B' as const },
-  { name: 'HIMARS', category: 'Rocket Artillery', chain: 'Land' as const, tier: 'WSGC-A' as const },
-  { name: 'Patriot PAC-3', category: 'Air Defense System', chain: 'Land' as const, tier: 'WSGC-A' as const },
-  { name: 'THAAD', category: 'Missile Defense System', chain: 'Land' as const, tier: 'WSGC-A' as const },
-  { name: 'M109 Paladin', category: 'Self-Propelled Howitzer', chain: 'Land' as const, tier: 'WSGC-B' as const },
-  { name: 'JLTV', category: 'Light Tactical Vehicle', chain: 'Land' as const, tier: 'WSGC-C' as const },
-  { name: 'M-ATV', category: 'MRAP Vehicle', chain: 'Land' as const, tier: 'WSGC-C' as const },
+  { name: 'F-16 Fighting Falcon', category: 'Fixed Wing Aircraft', chain: 'Aviation' as const, tier: 'WSGC-A' as const, primaryOem: 'Lockheed Martin' },
+  { name: 'F-15 Eagle', category: 'Fixed Wing Aircraft', chain: 'Aviation' as const, tier: 'WSGC-A' as const, primaryOem: 'Boeing' },
+  { name: 'F-35 Lightning II', category: 'Fixed Wing Aircraft', chain: 'Aviation' as const, tier: 'WSGC-A' as const, primaryOem: 'Lockheed Martin' },
+  { name: 'F/A-18 Hornet', category: 'Fixed Wing Aircraft', chain: 'Aviation' as const, tier: 'WSGC-A' as const, primaryOem: 'Boeing' },
+  { name: 'B-52 Stratofortress', category: 'Strategic Bomber', chain: 'Aviation' as const, tier: 'WSGC-A' as const, primaryOem: 'Boeing' },
+  { name: 'B-1B Lancer', category: 'Strategic Bomber', chain: 'Aviation' as const, tier: 'WSGC-A' as const, primaryOem: 'Northrop Grumman' },
+  { name: 'C-130 Hercules', category: 'Transport Aircraft', chain: 'Aviation' as const, tier: 'WSGC-B' as const, primaryOem: 'Lockheed Martin' },
+  { name: 'C-17 Globemaster III', category: 'Transport Aircraft', chain: 'Aviation' as const, tier: 'WSGC-B' as const, primaryOem: 'Boeing' },
+  { name: 'AH-64 Apache', category: 'Rotary Wing Aircraft', chain: 'Aviation' as const, tier: 'WSGC-A' as const, primaryOem: 'Boeing' },
+  { name: 'UH-60 Black Hawk', category: 'Rotary Wing Aircraft', chain: 'Aviation' as const, tier: 'WSGC-B' as const, primaryOem: 'Sikorsky' },
+  { name: 'CH-47 Chinook', category: 'Rotary Wing Aircraft', chain: 'Aviation' as const, tier: 'WSGC-B' as const, primaryOem: 'Boeing' },
+  { name: 'V-22 Osprey', category: 'Tiltrotor Aircraft', chain: 'Aviation' as const, tier: 'WSGC-A' as const, primaryOem: 'Bell Textron' },
+  { name: 'KC-135 Stratotanker', category: 'Tanker Aircraft', chain: 'Aviation' as const, tier: 'WSGC-B' as const, primaryOem: 'Boeing' },
+  { name: 'E-3 Sentry (AWACS)', category: 'C4ISR Aircraft', chain: 'Aviation' as const, tier: 'WSGC-B' as const, primaryOem: 'Boeing' },
+  { name: 'MQ-9 Reaper', category: 'Unmanned Aerial System', chain: 'Aviation' as const, tier: 'WSGC-B' as const, primaryOem: 'General Dynamics' },
+  { name: 'P-8 Poseidon', category: 'Maritime Patrol Aircraft', chain: 'Aviation' as const, tier: 'WSGC-A' as const, primaryOem: 'Boeing' },
+  { name: 'Arleigh Burke DDG', category: 'Guided Missile Destroyer', chain: 'Maritime' as const, tier: 'WSGC-A' as const, primaryOem: 'BAE Systems' },
+  { name: 'Ticonderoga CG', category: 'Guided Missile Cruiser', chain: 'Maritime' as const, tier: 'WSGC-A' as const, primaryOem: 'BAE Systems' },
+  { name: 'Virginia Class SSN', category: 'Nuclear Submarine', chain: 'Maritime' as const, tier: 'WSGC-A' as const, primaryOem: 'General Dynamics' },
+  { name: 'Nimitz CVN', category: 'Aircraft Carrier', chain: 'Maritime' as const, tier: 'WSGC-A' as const, primaryOem: 'Northrop Grumman' },
+  { name: 'San Antonio LPD', category: 'Amphibious Transport Dock', chain: 'Maritime' as const, tier: 'WSGC-B' as const, primaryOem: 'BAE Systems' },
+  { name: 'Freedom LCS', category: 'Littoral Combat Ship', chain: 'Maritime' as const, tier: 'WSGC-C' as const, primaryOem: 'Lockheed Martin' },
+  { name: 'Minuteman III', category: 'ICBM', chain: 'Land' as const, tier: 'WSGC-A' as const, primaryOem: 'Northrop Grumman' },
+  { name: 'M1A2 Abrams', category: 'Main Battle Tank', chain: 'Land' as const, tier: 'WSGC-A' as const, primaryOem: 'General Dynamics' },
+  { name: 'M2 Bradley', category: 'Infantry Fighting Vehicle', chain: 'Land' as const, tier: 'WSGC-A' as const, primaryOem: 'BAE Systems' },
+  { name: 'Stryker', category: 'Armored Fighting Vehicle', chain: 'Land' as const, tier: 'WSGC-B' as const, primaryOem: 'General Dynamics' },
+  { name: 'HIMARS', category: 'Rocket Artillery', chain: 'Land' as const, tier: 'WSGC-A' as const, primaryOem: 'Lockheed Martin' },
+  { name: 'Patriot PAC-3', category: 'Air Defense System', chain: 'Land' as const, tier: 'WSGC-A' as const, primaryOem: 'Raytheon' },
+  { name: 'THAAD', category: 'Missile Defense System', chain: 'Land' as const, tier: 'WSGC-A' as const, primaryOem: 'Lockheed Martin' },
+  { name: 'M109 Paladin', category: 'Self-Propelled Howitzer', chain: 'Land' as const, tier: 'WSGC-B' as const, primaryOem: 'BAE Systems' },
+  { name: 'JLTV', category: 'Light Tactical Vehicle', chain: 'Land' as const, tier: 'WSGC-C' as const, primaryOem: 'Lockheed Martin' },
 ];
 
 const nomenclatures: Record<string, string[]> = {
@@ -74,11 +74,14 @@ const nomenclatures: Record<string, string[]> = {
   'Landing Gear': ['Main Gear Strut', 'Nose Gear Actuator', 'Wheel Bearing Assy', 'Brake Disc', 'Torque Link', 'Shimmy Damper', 'Retract Cylinder', 'Drag Brace'],
   'Hydraulics': ['Hydraulic Pump Assy', 'Servo Valve', 'Pressure Accumulator', 'Filter Element', 'Reservoir Tank', 'Flow Control Valve', 'Relief Valve', 'Manifold Block'],
   'Jet Engines': ['Turbine Blade Set', 'Combustor Liner', 'Fuel Nozzle Assy', 'Compressor Stator', 'Exhaust Nozzle Ring', 'Afterburner Duct', 'Igniter Plug', 'Oil Cooler'],
-  'Avionics': ['Radar Processor Unit', 'GPS Receiver Module', 'Display Controller', 'Signal Processor Card', 'Antenna Coupler', 'IFF Transponder', 'HUD Combiner Glass', 'Data Bus Controller'],
+  'Avionics/Electronics': ['Radar Processor Unit', 'GPS Receiver Module', 'Display Controller', 'Signal Processor Card', 'Antenna Coupler', 'IFF Transponder', 'HUD Combiner Glass', 'Data Bus Controller'],
+  'Fuel Systems': ['Fuel Boost Pump', 'Fuel Filter Assy', 'Fuel Tank Bladder', 'Fuel Quantity Transmitter', 'Refuel Valve Assy', 'Fuel Line Coupling', 'Vent Float Valve', 'Drop Tank Pylon'],
   'Fasteners & Hardware': ['Hi-Lok Fastener Kit', 'Titanium Bolt Set', 'Structural Rivet Kit', 'Lock Wire Spool', 'Self-Sealing Nut Plate', 'Clamp Assembly', 'Shear Pin Set', 'Retaining Ring Kit'],
   'Cable & Wire': ['Wiring Harness Assy', 'Coaxial Cable Seg', 'Fiber Optic Bundle', 'Connector Shell', 'Terminal Block', 'EMI Shield Braid', 'Cannon Plug Assy', 'Wire Bundle Clamp'],
   'Valves': ['Check Valve Assy', 'Solenoid Valve', 'Bleed Air Valve', 'Fuel Shutoff Valve', 'Pneumatic Regulator', 'Butterfly Valve', 'Priority Valve', 'Sequence Valve'],
   'Instruments': ['Pressure Gauge', 'Temperature Sensor', 'Tachometer Generator', 'Altimeter Module', 'Airspeed Indicator', 'Fuel Quantity Probe', 'Torque Indicator', 'Vibration Sensor'],
+  'Fire Control': ['Fire Control Computer', 'Laser Rangefinder', 'Ballistic Processor', 'Target Tracker Unit', 'Weapon Release Module', 'Gun Camera', 'Stores Mgmt Unit', 'Missile Launcher Rail'],
+  'Support Equipment': ['Ground Power Unit', 'Tow Bar Adapter', 'Maintenance Stand', 'Test Set Module', 'Calibration Fixture', 'Hydraulic Mule Pump', 'Pneumatic Cart Valve', 'Jacking Pad Assy'],
 };
 
 function seededRandom(seed: number) {
