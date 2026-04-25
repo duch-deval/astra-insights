@@ -166,7 +166,7 @@ export default function PlatformQuadChart(props: PlatformQuadChartProps) {
                 codes="3B / 3R / 3M"
                 count={p.review}
                 max={maxBar}
-                colorClass="bg-orange-500"
+                colorClass="bg-warning"
               />
             </div>
           </Quadrant>
@@ -218,18 +218,18 @@ export default function PlatformQuadChart(props: PlatformQuadChartProps) {
           <Quadrant
             title="Our Strategy"
             subtitle="Hunting & Farming Approach"
-            accentClass="border-l-orange-500"
+            accentClass="border-l-warning"
           >
             <div className="grid grid-cols-2 gap-4 h-full">
               <div>
-                <div className="text-xs font-bold uppercase tracking-wide text-orange-600 mb-2 pb-1 border-b border-orange-500/30">
+                <div className="text-xs font-bold uppercase tracking-wide text-warning mb-2 pb-1 border-b border-warning/30">
                   Hunting
                 </div>
                 <p className="text-[10px] text-muted-foreground mb-2 italic">New opportunities</p>
                 <ul className="space-y-1.5 text-xs text-foreground">
                   {p.hunting.map((item, i) => (
                     <li key={i} className="flex gap-2">
-                      <span className="text-orange-500 font-bold">›</span>
+                      <span className="text-warning font-bold">›</span>
                       <span>{item}</span>
                     </li>
                   ))}
